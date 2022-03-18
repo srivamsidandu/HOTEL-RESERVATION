@@ -1,0 +1,79 @@
+<div class="container">    
+    <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info" >
+                <div class="panel-heading">
+                    <div class="panel-title">Add hotels</div>
+                </div>     
+                <div style="padding-top:30px" class="panel-body" >
+                    {{msg}}
+                    <form #r="ngForm"  (submit)= "addhotels(r)" >
+                            
+                                            
+                        <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input type="text" class="form-control"  name="uname" placeholder="Username" ngModel #username="ngModel"  required  (blur)="hotelnameavailornot(username.value)">                                        
+                                </div>
+
+                                <p class="alert alert-danger"
+                                *ngIf="username.errors?.required && username.touched">
+                                    Please enter the Hotelname
+                                </p>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input type="text" class="form-control"  name="uemail" ngModel placeholder="Email" #useremail="ngModel" required email >                                        
+                                </div>
+                                <div class="alert alert-danger" 
+                                *ngIf="useremail.errors?.required && useremail.touched" >
+                                    Please enter the Hotel emailId
+                                </div>
+                                <div class="alert alert-danger"
+                                *ngIf="useremail.errors?.email && useremail.touched">
+                                    Please enter Valid emailId
+                                </div>
+                                   
+                            
+                        <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input type="text" class="form-control"  name="urate" ngModel placeholder="no of stars" #rate="ngModel" required>
+                                </div>
+                                <div class="alert alert-danger"
+                                *ngIf="rate.errors?.required && rate.touched">
+                                    Please enter the no of stars
+
+                                </div>
+                               
+                        
+                        <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                                    <input type="text" class="form-control"  name="uphone" ngModel placeholder="Phone Number" #ph="ngModel" required pattern="^[0-9]*$"  >                                        
+                                </div>
+
+                                <div class="alert alert-danger"
+                                *ngIf="ph.errors?.required && ph.touched">
+                                    Please enter the phone number
+                                </div>
+
+                                <div class="alert alert-danger"
+                                *ngIf="ph.errors?.pattern && ph.touched">
+                                Please enter the valid Number
+
+                               </div>
+
+                            <div style="margin-top:10px" class="form-group">
+                                <!-- Button -->
+                                <div class="col-sm-12">
+                                    <input type="submit" class="btn btn-success" value="Addhotel" [disabled]= "!newhotelnameavail" >
+                                   &nbsp;
+                                 
+                                </div>
+                            </div>
+                        </form>
+                        <br>  <br><br>
+                        
+                    </div>                     
+                </div>  
+    </div>
+
+   
+</div>
